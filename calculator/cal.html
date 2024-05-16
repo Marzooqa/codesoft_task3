@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  body{
+    background-image: url(https://img.freepik.com/free-photo/top-view-notebooks-calculator_23-2149103982.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1715644800&semt=ais_user);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .calculator {
+    background-color: rgba(1, 59, 0, 0.771);
+    padding: 20px;
+    max-width: 400px;
+    margin-left: 80px;
+    border: solid 1px #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    margin-top: 150px;
+  }
+  
+  #result{
+     background-color: rgb(242, 255, 216);
+      width: 100%;
+      padding: 20px;
+      font-size: 24px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) inset;
+      border-radius: 20px;
+  }
+  
+  .buttons{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+  }
+  
+  button{
+      padding: 10px;
+      font-size: 24px;
+      border: none;
+      box-shadow: 0 2px 5px rgb(0, 103, 12);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+  }
+  
+  button:hover{
+      background-color: #ddd;
+      color: #333;
+  }
+  
+  .clear{
+      background-color: #00ac39;
+      color: #fff;
+  }
+  
+  .number, .decimal{
+      background-color: #fff;
+      color: #333;
+  
+  }
+  
+  .operator{
+      background-color: #229b00f3;
+      color: #fff;
+  }
+  
+  .equals{
+      background-color: #229b00f3;
+      grid-row: span 3;
+      color: #fff;
+  }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="buttons">
+            <button class="clear">C</button>
+            <button class="operator">/</button>
+            <button class="operator">*</button>
+            <button class="operator">-</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="operator">+</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="equals">=</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="number">0</button>
+            <button class="decimal">.</button>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelectorAll("button");
+const result = document.getElementById("result");
+
+for(let i =0; i<button.length; i++){
+button[i].addEventListener("click", () =>
+{
+const buttonValue = button[i].textContent;
+if(buttonValue === "C")
+{
+  clearResult();
+}
+else if(buttonValue === "=")
+{
+  calculateResult();
+}
+else 
+{
+  appendValue(buttonValue);
+}
+});
+}
+
+function clearResult()
+{
+  result.value="";
+}
+
+function calculateResult()
+{
+  result.value =eval(result.value);
+}
+
+function appendValue(buttonValue)
+{
+  result.value = result.value + buttonValue;
+}
+    </script>
+</body>
+</html>
